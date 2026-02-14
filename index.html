@@ -3,558 +3,763 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Serigne Fallou Diagne - Développeur Web & Designer Graphique basé à Dakar. Création de sites web modernes, responsifs et performants.">
+    <meta name="keywords" content="développeur web, designer graphique, WordPress, Dakar, création site web">
     <script src="https://cdn.tailwindcss.com"></script>
+    <title>Serigne Fallou Diagne - Développeur Web & Designer</title>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
-                        },
-                        slideInRight: {
-                            '0%': { opacity: '0', transform: 'translateX(30px)' },
-                            '100%': { opacity: '1', transform: 'translateX(0)' }
-                        }
-                    },
                     animation: {
-                        fadeInUp: 'fadeInUp 0.6s ease-out',
-                        slideInRight: 'slideInRight 0.6s ease-out'
-                    }
+                        'fade-in': 'fadeIn 1s ease-in',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'slide-right': 'slideRight 0.8s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideRight: {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                    },
                 }
             }
         }
     </script>
-    <title>Serigne Fallou Diagne - Développeur & Designer</title>
 </head>
-<body class="bg-white text-gray-900 overflow-x-hidden">
-    <!-- Header/Navigation -->
-    <header class="fixed top-0 w-full bg-white border-b border-gray-200 z-50 shadow-sm">
-        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<body class="bg-white text-gray-900 antialiased overflow-x-hidden">
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-md z-50 shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10  rounded-full overflow-hidden -lg bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center text-white font-bold text-lg ">
-                    <img src="IMAGES/moi.jpg" alt="profil"  class="w-full h-full object-cover">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                    <img src="IMAGES/moi.jpg" alt="SFD" class="w-full h-full object-cover rounded-full">
                 </div>
-                <span class="text-xl font-bold text-gray-900">Serigne Fallou Diagne</span>
+                <span class="text-2xl font-black text-gray-900 tracking-tight">SFD</span>
             </div>
 
-            <ul class="hidden md:flex gap-8 items-center text-gray-700">
-                <li><a href="#accueil" class="hover:text-blue-600 transition font-medium">Accueil</a></li>
-                <li><a href="#apropos" class="hover:text-blue-600 transition font-medium">À propos</a></li>
-                <li><a href="#expertise" class="hover:text-blue-600 transition font-medium">Expertise</a></li>
-                <li><a href="#projets" class="hover:text-blue-600 transition font-medium">projets</a></li>
-                <li><a href="#contact" class="hover:text-blue-600 transition font-medium">Contacts</a></li>
-            </ul>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#accueil" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Accueil</a>
+                <a href="#apropos" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">À propos</a>
+                <a href="#expertise" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Expertise</a>
+                <a href="#projets" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Projets</a>
+                <a href="#avis" class="text-gray-700 font-medium hover:text-blue-600 transition duration-300">Avis</a>
+                <a href="#contact" class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300 shadow-md hover:shadow-lg">Contact</a>
+            </div>
 
-            <a href="#contact" class="hidden md:inline-block px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition">
-                recruter
-            </a>
+            <button id="menu-btn" class="md:hidden text-gray-700 text-2xl font-bold hover:text-blue-600 transition">☰</button>
+        </div>
 
-            <button class="md:hidden text-gray-700 text-2xl">
-             
-            </button>
-        </nav>
-    </header>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-6 py-4 space-y-3">
+                <a href="#accueil" class="block text-gray-700 font-medium hover:text-blue-600 transition py-2">Accueil</a>
+                <a href="#apropos" class="block text-gray-700 font-medium hover:text-blue-600 transition py-2">À propos</a>
+                <a href="#expertise" class="block text-gray-700 font-medium hover:text-blue-600 transition py-2">Expertise</a>
+                <a href="#projets" class="block text-gray-700 font-medium hover:text-blue-600 transition py-2">Projets</a>
+                <a href="#avis" class="block text-gray-700 font-medium hover:text-blue-600 transition py-2">Avis</a>
+                <a href="#contact" class="block w-full text-center px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Hero Section - Minimaliste et épuré -->
-    <section id="accueil" class="pt-32 pb-20 px-6 bg-gradient-to-b from-gray-50 to-white">
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="accueil" class="pt-32 pb-24 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-indigo-50 -z-10"></div>
+        <div class="absolute top-20 right-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow -z-10"></div>
+        <div class="absolute -bottom-8 left-10 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow -z-10" style="animation-delay: 2s"></div>
+
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-            <!-- Texte -->
-            <div class="animate-fadeInUp">
-                <div class="mb-6">
-                    <span class="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-4">
-                        WELCOME
-                    </span>
-                    <h1 class="text-5xl md:text-5xl font-black text-gray-900 leading-tight mb-6">
-                     Hello 👋,I'm<span class="text-blue-600"> SERIGNE FALLOU DIAGNE</span> Web Developer
-                    </h1>
+            <div class="animate-slide-up space-y-8">
+                <div class="inline-block">
+                    <span class="inline-block px-4 py-2 bg-blue-100 text-blue-700 font-semibold text-sm rounded-full">BIENVENUE</span>
                 </div>
+                
+                <h1 class="text-5xl md:text-6xl font-black text-gray-900 leading-tight">
+                    Transformez vos <span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">idées en réalité</span>
+                </h1>
 
-                <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-                    Je suis développeur web et designer graphique. Je transforme vos idées en solutions web modernes, performantes et esthétiques.
+                <p class="text-xl text-gray-600 leading-relaxed max-w-lg">
+                    Je suis Serigne Fallou Diagne, développeur web et designer graphique. Je crée des solutions web modernes, performantes et esthétiques qui amplifient votre présence en ligne.
                 </p>
 
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#projets" class="px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition text-center">
+                <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                    <a href="#projets" class="px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl text-center">
                         Voir mes projets
                     </a>
-                    <a href="#contact" class="px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition text-center">
-                        Parlons ensemble
+                    <a href="#contact" class="px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition duration-300 text-center">
+                        Discutons ensemble
                     </a>
                 </div>
 
-                <div class="mt-12 flex gap-8">
-                    <div>
-                        <div class="text-3xl font-bold text-gray-900">10+</div>
-                        <p class="text-gray-600">Projets réalisés</p>
+                <div class="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200">
+                    <div class="text-center md:text-left">
+                        <div class="text-4xl font-black text-blue-600">10+</div>
+                        <p class="text-gray-600 font-medium">Projets réalisés</p>
                     </div>
-                    <div>
-                        <div class="text-3xl font-bold text-gray-900">2+</div>
-                        <p class="text-gray-600">Ans d'expérience</p>
+                    <div class="text-center md:text-left">
+                        <div class="text-4xl font-black text-blue-600">2+</div>
+                        <p class="text-gray-600 font-medium">Ans d'expérience</p>
                     </div>
-                    <div>
-                        <div class="text-3xl font-bold text-gray-900">100%</div>
-                        <p class="text-gray-600">Satisfaction client</p>
+                    <div class="text-center md:text-left">
+                        <div class="text-4xl font-black text-blue-600">50+</div>
+                        <p class="text-gray-600 font-medium">Clients satisfaits</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Video/Illustration -->
-           <div class="animate-slideInRight hidden md:block">
-                <div class="relative w-full h-96 rounded-2xl overflow-hidden shadow-2xl">
-                    <video autoplay muted loop class="w-full h-full object-cover">
-                     <source src="IMAGES/video.mp4" type="video/mp4">
-                    </video>
+            <div class="hidden md:block animate-slide-right">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-3xl blur-2xl opacity-30"></div>
+                    <div class="relative bg-white rounded-3xl overflow-hidden shadow-2xl animate-float">
+                        <video autoplay muted loop playsinline class="w-full h-96 object-cover">
+                            <source src="IMAGES/video.mp4" type="video/mp4">
+                        </video>
+                    </div>
                 </div>
             </div>
+        </div>
     </section>
 
-    <!-- À propos - Section claire et structurée -->
-    <section id="apropos" class="py-20 px-6 bg-white">
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section id="apropos" class="py-24 px-6 bg-gray-50">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-                    Qui suis-je ?
-                </h2>
-                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-5xl font-black text-gray-900">Qui suis-je ?</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Découvrez mon parcours et ma passion pour le développement web</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div class="flex items-center justify-center">
-                         <div class="w-[800px] aspect-video rounded-2xl overflow-hidden shadow-lg">
-                             <img src="IMAGES/moi2.png" alt="SFD" class="w-full h-full object-cover">
-                         </div>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="animate-slide-up">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="IMAGES/moi2.png" alt="Serigne Fallou Diagne" class="w-full h-96 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </div>
                 </div>
 
-                </div>
-
-                <div>
-                    <h3 class="text-3xl font-bold text-gray-900 mb-6">
-                        Développeur web basé à Dakar
-                    </h3>
-                    <p class="text-gray-700 text-lg mb-6 leading-relaxed">
-                        Je suis actuellement en formation de Licence 2 en Génie Informatique. Avec 2+ ans d'expérience, je maîtrise les technologies modernes pour créer des sites web performants et des designs captivants.
+                <div class="animate-slide-right space-y-6">
+                    <h3 class="text-3xl font-black text-gray-900">Développeur basé à Dakar</h3>
+                    
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Actuellement en formation de Licence 2 en Génie Informatique à l'Université Professionnelle, j'accumule plus de 2 ans d'expérience pratique dans le développement web et le design graphique.
                     </p>
 
-                    <p class="text-gray-700 text-lg mb-8 leading-relaxed">
-                        Mon expertise couvre le développement front-end, l'infographie, WordPress et le support informatique. Je travaille avec passion pour transformer vos projets en succès.
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Ma mission : transformer vos idées en solutions web innovantes et esthétiques. Je maîtrise les technologies modernes et je suis passionné par la création d'expériences utilisateur exceptionnelles.
                     </p>
 
-                    <div class="grid grid-cols-2 gap-6 mb-8">
-                        <div class="bg-blue-50 rounded-lg p-4">
-                            <p class="text-sm text-gray-600 mb-1">Formation</p>
-                            <p class="font-bold text-gray-900">Licence 2 - Génie Info</p>
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="bg-white rounded-lg p-4 border border-gray-200 hover:border-blue-600 transition">
+                            <p class="text-sm text-gray-600 font-medium mb-1">Spécialité</p>
+                            <p class="font-bold text-gray-900">Web & Design</p>
                         </div>
-                        <div class="bg-blue-50 rounded-lg p-4">
-                            <p class="text-sm text-gray-600 mb-1">Localisation</p>
-                            <p class="font-bold text-gray-900">Dakar, Sénégal</p>
+                        <div class="bg-white rounded-lg p-4 border border-gray-200 hover:border-blue-600 transition">
+                            <p class="text-sm text-gray-600 font-medium mb-1">Localisation</p>
+                            <p class="font-bold text-gray-900">Dakar, SN</p>
                         </div>
                     </div>
 
-                    <a href="IMAGES/mon-CV.pdf" download class="inline-block px-6 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition">
-                        Télécharger CV
-                        <img src="IMAGES/download.jpg" alt="download" class="w-5 h-5 inline-block ml-2"> 
+                    <a href="IMAGES/mon-CV.pdf" download class="inline-flex items-center gap-3 px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-300 shadow-lg hover:shadow-xl">
+                        <span>Télécharger CV</span>
+                        <img src="IMAGES/download.jpg" alt="Download" class="w-5 h-5">
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Expertise - Cards modernes -->
-    <section id="expertise" class="py-20 px-6 bg-gray-50">
+    <!-- ==================== EXPERTISE SECTION ==================== -->
+    <section id="expertise" class="py-24 px-6 bg-white">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-                    Mes Compétences
-                </h2>
-                <p class="text-gray-600 text-lg">Expertise en développement web et design</p>
-                <div class="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-5xl font-black text-gray-900">Mes Compétences</h2>
+                <p class="text-xl text-gray-600">Expertise complète en développement et design</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
                 <!-- Card 1 -->
-                <div class="bg-white rounded-xl p-8 border border-gray-200 hover:border-blue-600 hover:shadow-lg transition">
-                    <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-2xl mb-4">
-                        <img src="IMAGES/dev.jpg" alt="dev" class="w-75 h-75 rounded-lg">
+                <div class="group bg-white rounded-2xl p-8 border border-gray-200 hover:border-blue-600 hover:shadow-xl transition duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                        <img src="IMAGES/dev.jpg" alt="Dev" class="w-full h-full rounded">
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Développement Web</h3>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-center gap-2">
-                            ✓
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓</span>
                             HTML5 & CSS3
                         </li>
-                        <li class="flex items-center gap-2">
-                            ✓
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓</span>
                             JavaScript & Python
                         </li>
-                        <li class="flex items-center gap-2">
-                            ✓
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓</span>
                             Tailwind CSS
                         </li>
-                        <li class="flex items-center gap-2">
-                            ✓
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓</span>
                             Sites Responsifs
                         </li>
                     </ul>
-                    <p class="text-3xl font-bold text-blue-600 mt-6">90%</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                        <span class="text-2xl font-black text-blue-600">90%</span>
+                        <div class="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-blue-600 to-indigo-600" style="width: 90%"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="bg-white rounded-xl p-8 border border-gray-200 hover:border-blue-600 hover:shadow-lg transition">
-                    <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-2xl mb-4">
-                        <img src="IMAGES/wordpress.jpg" alt="dev" class="w-75 h-75">
+                <div class="group bg-white rounded-2xl p-8 border border-gray-200 hover:border-purple-600 hover:shadow-xl transition duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-100 to-pink-100 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                        <img src="IMAGES/wordpress.jpg" alt="WP" class="w-full h-full rounded">
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">WordPress</h3>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-center gap-2">
-                            ✓
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓</span>
                             Développement Custom
                         </li>
-                        <li class="flex items-center gap-2">
-                            ✓
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓</span>
                             Plugins & Thèmes
                         </li>
-                        <li class="flex items-center gap-2">
-                            ✓
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓</span>
                             Optimisation SEO
                         </li>
-                        <li class="flex items-center gap-2">
-                            ✓
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓</span>
                             Maintenance
                         </li>
                     </ul>
-                    <p class="text-3xl font-bold text-blue-600 mt-6">85%</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                        <span class="text-2xl font-black text-purple-600">85%</span>
+                        <div class="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-purple-600 to-pink-600" style="width: 85%"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="bg-white rounded-xl p-8 border border-gray-200 hover:border-blue-600 hover:shadow-lg transition">
-                    <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-2xl mb-4">
-                        <img src="IMAGES/design.jpg" alt="infographie" class="w-75 h-75 rounded-lg">
+                <div class="group bg-white rounded-2xl p-8 border border-gray-200 hover:border-orange-600 hover:shadow-xl transition duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-100 to-red-100 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                        <img src="IMAGES/design.jpg" alt="Design" class="w- h-full rounded">
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Infographie</h3>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-center gap-2">
-                            ✓
-                            Design illustrator
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓</span>
+                            Design Illustrator
                         </li>
-                        <li class="flex items-center gap-2">
-                            ✓
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓</span>
                             Logos & Branding
                         </li>
-                        <li class="flex items-center gap-2">
-                            ✓
-                            Infographie
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓</span>
+                            Infographie créative
                         </li>
-                        <li class="flex items-center gap-2">
-                            ✓
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <span class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓</span>
                             Flyers & Posters
                         </li>
                     </ul>
-                    <p class="text-3xl font-bold text-blue-600 mt-6">88%</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                        <span class="text-2xl font-black text-orange-600">92%</span>
+                        <div class="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-orange-600 to-red-600" style="width: 92%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Tech Stack -->
-            <div class="mt-16 bg-white rounded-xl p-8 border border-gray-200">
-                <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">SKILLS</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                    <div class="bg-gray-50 rounded-lg p-4 text-center hover:bg-blue-50 transition">
-                        <p class="text-3xl mb-2"><img src="IMAGES/html.jpg" alt="HTML5" class="w-10 h-10"></p>
-                        <p class="font-semibold text-gray-900 text-sm">HTML5</p>
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-12 text-white">
+                <h3 class="text-3xl font-bold mb-12 text-center">Pile Technologique</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                    <div class="group bg-white/10 rounded-xl p-6 backdrop-blur text-center hover:bg-white/20 transition duration-300 border border-white/20 hover:border-white/40">
+                        <img src="IMAGES/html.jpg" alt="HTML5" class="w-12 h-12 mx-auto mb-3">
+                        <p class="font-semibold">HTML5</p>
                     </div>
-                    <div class="bg-gray-50 rounded-lg p-4 text-center hover:bg-blue-50 transition">
-                        <p class="text-3xl mb-2"><img src="IMAGES/css.jpg" alt="CSS" class="w-10 h-10 rounded-full"></p>
-                        <p class="font-semibold text-gray-900 text-sm">CSS</p>
+                    <div class="group bg-white/10 rounded-xl p-6 backdrop-blur text-center hover:bg-white/20 transition duration-300 border border-white/20 hover:border-white/40">
+                        <img src="IMAGES/css.jpg" alt="CSS" class="w-12 h-12 mx-auto mb-3 rounded-full">
+                        <p class="font-semibold">CSS</p>
                     </div>
-                    <div class="bg-gray-50 rounded-lg p-4 text-center hover:bg-blue-50 transition">
-                        <p class="text-3xl mb-2"><img src="IMAGES/java.png" alt="JavaScript" class="w-10 h-10"></p>
-                        <p class="font-semibold text-gray-900 text-sm">JavaScript</p>
+                    <div class="group bg-white/10 rounded-xl p-6 backdrop-blur text-center hover:bg-white/20 transition duration-300 border border-white/20 hover:border-white/40">
+                        <img src="IMAGES/java.png" alt="JavaScript" class="w-12 h-12 mx-auto mb-3">
+                        <p class="font-semibold">JavaScript</p>
                     </div>
-                    <div class="bg-gray-50 rounded-lg p-4 text-center hover:bg-blue-50 transition">
-                        <p class="text-3xl mb-2"><img src="IMAGES/tailwind.jpg" alt="Tailwind" class="w-10 h-10 rounded-full"></p>
-                        <p class="font-semibold text-gray-900 text-sm">Tailwind</p>
+                    <div class="group bg-white/10 rounded-xl p-6 backdrop-blur text-center hover:bg-white/20 transition duration-300 border border-white/20 hover:border-white/40">
+                        <img src="IMAGES/tailwind.jpg" alt="Tailwind" class="w-12 h-12 mx-auto mb-3 rounded-full">
+                        <p class="font-semibold">Tailwind</p>
                     </div>
-                    <div class="bg-gray-50 rounded-lg p-4 text-center hover:bg-blue-50 transition">
-                        <p class="text-3xl mb-2"><img src="IMAGES/wordpress.jpg" alt="WordPress" class="w-10 h-10 rounded-full"></p>
-                        <p class="font-semibold text-gray-900 text-sm">WordPress</p>
+                    <div class="group bg-white/10 rounded-xl p-6 backdrop-blur text-center hover:bg-white/20 transition duration-300 border border-white/20 hover:border-white/40">
+                        <img src="IMAGES/wordpress.jpg" alt="WordPress" class="w-12 h-12 mx-auto mb-3 rounded-full">
+                        <p class="font-semibold">WordPress</p>
                     </div>
-                    <div class="bg-gray-50 rounded-lg p-4 text-center hover:bg-blue-50 transition">
-                        <p class="text-3xl mb-2"><img src="IMAGES/python.jpg" alt="Python" class="w-10 h-10 rounded-full"></p>
-                        <p class="font-semibold text-gray-900 text-sm">Python</p>
+                    <div class="group bg-white/10 rounded-xl p-6 backdrop-blur text-center hover:bg-white/20 transition duration-300 border border-white/20 hover:border-white/40">
+                        <img src="IMAGES/python.jpg" alt="Python" class="w-12 h-12 mx-auto mb-3 rounded-full">
+                        <p class="font-semibold">Python</p>
                     </div>
-                    <div class="bg-gray-50 rounded-lg p-4 text-center hover:bg-blue-50 transition">
-                        <p class="text-3xl mb-2"><img src="IMAGES/git.jpg" alt="Git" class="w-10 h-10 rounded-full"></p>
-                        <p class="font-semibold text-gray-900 text-sm">Git</p>
+                    <div class="group bg-white/10 rounded-xl p-6 backdrop-blur text-center hover:bg-white/20 transition duration-300 border border-white/20 hover:border-white/40">
+                        <img src="IMAGES/git.jpg" alt="Git" class="w-12 h-12 mx-auto mb-3 rounded-full">
+                        <p class="font-semibold">Git</p>
                     </div>
-                        <div class="bg-gray-50 rounded-lg p-4 text-center hover:bg-blue-50 transition">
-                        <p class="text-3xl mb-2"><img src="IMAGES/MYSQL.jpg" alt="MySQL" class="w-10 h-10 rounded-full"></p>
-                        <p class="font-semibold text-gray-900 text-sm">MySQL</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Expérience & Formation -->
-    <section class="py-20 px-6 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4 text-center">
-                Parcours
-            </h2>
-            <div class="w-20 h-1 bg-blue-600 mx-auto mb-16"></div>
-
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Expérience -->
-                <div>
-                    <!-- ICONE BRIEFCASE : remplacer par <img src="briefcase-icon.svg" alt="Expérience" class="w-6 h-6"> -->
-                    <h3 class="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-2">
-                        <img src="IMAGES/experience.jpg" alt="💼" class="h-6 w-6 rounded-full">
-                        Expérience
-                    </h3>
-                    <div class="space-y-6">
-                        <div class="border-l-4 border-blue-600 pl-6 pb-6">
-                            <p class="text-sm text-blue-600 font-semibold mb-1">2024 - Présent</p>
-                            <h4 class="text-xl font-bold text-gray-900 mb-2">Stage - Assistance IT & Développement</h4>
-                            <p class="text-gray-700">TGI (Tout en Génie Informatique)</p>
-                            <p class="text-sm text-gray-600 mt-2">Support informatique, développement WordPress et infographie</p>
-                        </div>
-                        <div class="border-l-4 border-blue-600 pl-6 pb-6">
-                            <p class="text-sm text-blue-600 font-semibold mb-1">2016 - 2017</p>
-                            <h4 class="text-xl font-bold text-gray-900 mb-2">Agent de Transfert d'Argent</h4>
-                            <p class="text-gray-700">Multiservice EMG</p>
-                            <p class="text-sm text-gray-600 mt-2">Gestion des paiements et transferts numériques</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Formation -->
-                <div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-2">
-                        <img src="IMAGES/formation.jpg" alt="🎓" class="w-6 h-6 rounded-full">
-                        Formation
-                    </h3>
-                    <div class="space-y-6">
-                        <div class="border-l-4 border-blue-600 pl-6 pb-6">
-                            <p class="text-sm text-blue-600 font-semibold mb-1">2025 - 2026</p>
-                            <h4 class="text-xl font-bold text-gray-900 mb-2">Licence 2 - Génie Informatique</h4>
-                            <p class="text-gray-700">Univers Professionnel (UNIPRO)</p>
-                        </div>
-                        <div class="border-l-4 border-blue-600 pl-6 pb-6">
-                            <p class="text-sm text-blue-600 font-semibold mb-1">2024 - 2025</p>
-                            <h4 class="text-xl font-bold text-gray-900 mb-2">Licence 1 - Génie Informatique</h4>
-                            <p class="text-gray-700">Univers Professionnel (UNIPRO)</p>
-                        </div>
-                        <div class="border-l-4 border-blue-600 pl-6 pb-6">
-                            <p class="text-sm text-blue-600 font-semibold mb-1">2016 - 2017</p>
-                            <h4 class="text-xl font-bold text-gray-900 mb-2">Baccalauréat Série S2</h4>
-                            <p class="text-gray-700">Lycée Cheikh Mourath Ndao</p>
-                        </div>
+                    <div class="group bg-white/10 rounded-xl p-6 backdrop-blur text-center hover:bg-white/20 transition duration-300 border border-white/20 hover:border-white/40">
+                        <img src="IMAGES/MYSQL.jpg" alt="MySQL" class="w-12 h-12 mx-auto mb-3 rounded-full">
+                        <p class="font-semibold">MySQL</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio/Travaux -->
-    <section id="projets" class="py-20 px-6 bg-gray-50">
+    <!-- ==================== PROJECTS SECTION ==================== -->
+    <section id="projets" class="py-24 px-6 bg-gray-50">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-                    Mes Travaux
-                </h2>
-                <p class="text-gray-600 text-lg">Découvrez mes projets récents</p>
-                <div class="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-5xl font-black text-gray-900">Mes Projets</h2>
+                <p class="text-xl text-gray-600">Une sélection de mes meilleurs travaux</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Projet 1 -->
-                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-xl transition group">
-                    <div class="relative h-64 bg-gradient-to-br  to-blue-600 flex items-center justify-center overflow-hidden">
-                        <div class="text-6xl"><img src="IMAGES/SiteResponsif.jpg" alt="Site Web Responsif" class="w-43 h-43"></div>
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition flex items-center justify-center">
-                            <span class="text-white text-3xl opacity-0 group-hover:opacity-100 transition">→</span>
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- Project 1 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 animate-slide-up">
+                    <div class="relative h-64 bg-gradient-to-br from-blue-600 to-blue-400 overflow-hidden">
+                        <img src="IMAGES/SiteResponsif.jpg" alt="Site Web Responsif" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition duration-300 flex items-center justify-center">
+                            <div class="opacity-0 group-hover:opacity-100 transition duration-300">
+                                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Site Web Responsif</h3>
-                        <p class="text-gray-600 mb-4">Site vitrine moderne avec HTML5, CSS3 et JavaScript</p>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Site Web Responsif</h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">Site vitrine moderne avec HTML5, CSS3 et JavaScript. Design responsif et animations fluides pour une expérience utilisateur optimale.</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">HTML</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">CSS</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">JavaScript</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">HTML5</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">CSS3</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">JavaScript</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Projet 2 -->
-                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-xl transition group">
-                    <div class="relative h-64 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center overflow-hidden">
-                        <div class="text-6xl"><img src="IMAGES/SiteWordPress.jpg" alt="Site WordPress Custom" class="w-43 h-43"></div>
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition flex items-center justify-center">
-                            <span class="text-white text-3xl opacity-0 group-hover:opacity-100 transition">→</span>
+                <!-- Project 2 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 animate-slide-up" style="animation-delay: 0.1s">
+                    <div class="relative h-64 bg-gradient-to-br from-purple-600 to-purple-400 overflow-hidden">
+                        <img src="IMAGES/SiteWordPress.jpg" alt="Site WordPress Custom" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition duration-300 flex items-center justify-center">
+                            <div class="opacity-0 group-hover:opacity-100 transition duration-300">
+                                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Site WordPress Custom</h3>
-                        <p class="text-gray-600 mb-4">Site d'entreprise avec WordPress et plugins personnalisés</p>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Site WordPress Custom</h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">Site d'entreprise avec WordPress et plugins personnalisés. Architecture optimisée pour les performances et le référencement SEO.</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold">WordPress</span>
-                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold">PHP</span>
-                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold">SEO</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded-full">WordPress</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded-full">PHP</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded-full">SEO</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Projet 3 -->
-                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-xl transition group">
-                    <div class="relative h-64 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center overflow-hidden">
-                        <div class="text-6xl"><img src="IMAGES/creation.png" alt="Branding & Logo" class="w-47 h-47"></div>
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition flex items-center justify-center">
-                            <span class="text-white text-3xl opacity-0 group-hover:opacity-100 transition">→</span>
+                <!-- Project 3 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 animate-slide-up" style="animation-delay: 0.2s">
+                    <div class="relative h-64 bg-gradient-to-br from-green-600 to-green-400 overflow-hidden">
+                        <img src="IMAGES/creation.png" alt="Branding & Logo" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition duration-300 flex items-center justify-center">
+                            <div class="opacity-0 group-hover:opacity-100 transition duration-300">
+                                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Branding & Logo</h3>
-                        <p class="text-gray-600 mb-4">Identité visuelle complète : logo, charte graphique et supports</p>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Branding & Logo</h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">Identité visuelle complète : logo, charte graphique et supports marketing. Design unique et professionnel adapté à votre marque.</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">Logo</span>
-                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">Branding</span>
-                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">Design</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">Logo</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">Branding</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">Design</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Projet 4 -->
-                <div class="bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-xl transition group">
-                    <div class="relative h-64 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center overflow-hidden">
-                        <div class="text-6xl"><img src="IMAGES/apk web.jpg" alt="Application Web" class="w-43 h-43"></div>
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition flex items-center justify-center">
-                            <span class="text-white text-3xl opacity-0 group-hover:opacity-100 transition">→</span>
+                <!-- Project 4 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 animate-slide-up" style="animation-delay: 0.3s">
+                    <div class="relative h-64 bg-gradient-to-br from-orange-600 to-orange-400 overflow-hidden">
+                        <img src="IMAGES/apk web.jpg" alt="Application Web" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition duration-300 flex items-center justify-center">
+                            <div class="opacity-0 group-hover:opacity-100 transition duration-300">
+                                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Application Web</h3>
-                        <p class="text-gray-600 mb-4">Plateforme interactive avec interface moderne et responsive</p>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Application Web Interactive</h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">Plateforme interactive avec interface moderne et responsive. Développée avec les dernières technologies pour une performance optimale.</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold">Frontend</span>
-                            <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold">Design</span>
-                            <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-semibold">UX</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded-full">Frontend</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded-full">Design</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded-full">UX</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="text-center mt-12">
-                <a href="#contact" class="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition">
-                    Voir plus de projets
+            <div class="text-center">
+                <a href="#contact" class="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl">
+                    <span>Voir plus de projets</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Contact CTA -->
-    <section id="contact" class="py-20 px-6 bg-gradient-to-r from-blue-600 to-blue-800">
-        <div class="max-w-4xl mx-auto text-center text-white">
-            <h2 class="text-4xl md:text-5xl font-black mb-6">
-                Prêt à commencer votre projet ?
-            </h2>
-            <p class="text-xl text-blue-100 mb-8 leading-relaxed">
-                Contactez-moi pour discuter de vos idées et transformer votre vision en réalité
-            </p>
-
-            <div class="grid md:grid-cols-3 gap-8 mb-12 justify-items-center"> 
-                <div class="bg-white/10 rounded-lg p-6 backdrop-blur">
-                    <div class="text-3xl mb-4 flex items-center justify-center overflow-hidden"><img src="IMAGES/mail.jpg" alt="Email" class="w-10 h-10 rounded-full"></div>
-                    <p class="text-sm text-blue-100 mb-2">Email</p>
-                    <a href="mailto:Diagnisko21@gmail.com" class="font-bold text-white hover:text-blue-100 transition">
-                        Diagnisko21@gmail.com
-                    </a>
-                </div>
-                <div class="bg-white/10 rounded-lg p-6 backdrop-blur">
-                    <div class="text-3xl mb-4 flex items-center justify-center overflow-hidden"><img src="IMAGES/telephone.jpg" alt="Téléphone" class="w- h-10 rounded-full"></div>
-                    <p class="text-sm text-blue-100 mb-2">Téléphone</p>
-                    <a href="tel:+221781332323" class="font-bold text-white hover:text-blue-100 transition">
-                        +221 78 133 23 23
-                    </a>
-                </div>
-                <!-- ICONE LOCATION : remplacer par <img src="location-icon.svg" alt="Localisation" class="w-8 h-8"> -->
-                <div class="bg-white/10 rounded-lg p-6 backdrop-blur">
-                    <div class="text-3xl mb-4 flex items-center justify-center overflow-hidden"><img src="IMAGES/localisation.png" alt="Localisation" class="w-10 h-10 rounded-full"></div>
-                    <p class="text-sm text-blue-100 mb-2">Localisation</p>
-                    <p class="font-bold text-white">Dakar, Sénégal</p>
-                </div>
+    <!-- ==================== TESTIMONIALS SECTION ==================== -->
+    <section id="avis" class="py-24 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 space-y-4">
+                <h2 class="text-5xl font-black text-gray-900">Avis de Mes Clients</h2>
+                <p class="text-xl text-gray-600">Ils me font confiance et recommandent mon travail</p>
             </div>
 
-            <div class="bg-white rounded-xl p-8 md:p-12 text-gray-900">
-                <h3 class="text-2xl font-bold mb-8">Envoyer un message</h3>
-                <form class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <input type="text" placeholder="Votre nom" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
-                        <input type="email" placeholder="Votre email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 border border-blue-200 hover:shadow-xl transition duration-300 animate-slide-up">
+                    <div class="flex gap-1 mb-4">
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
                     </div>
-                    <input type="text" placeholder="Sujet" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
-                    <textarea rows="5" placeholder="Votre message..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 resize-none"></textarea>
-                    <button type="submit" class="w-full px-8 py-4 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition flex items-center justify-center gap-2">
-                        <img src="IMAGES/envoyer.jpg" alt="send" class="w-5 h-5 rounded-full">
-                        Envoyer
-                    </button>
-                </form>
+                    <p class="text-gray-800 mb-6 leading-relaxed italic text-lg font-medium">
+                        "Serigne a créé un site web magnifique pour mon entreprise. Son professionnalisme, sa créativité et sa réactivité sont exceptionnels. Je recommande vivement ses services !"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                            AM
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg">Amadou Mbaye</h4>
+                            <p class="text-sm text-gray-600">Directeur d'Entreprise</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 border border-purple-200 hover:shadow-xl transition duration-300 animate-slide-up" style="animation-delay: 0.1s">
+                    <div class="flex gap-1 mb-4">
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                    </div>
+                    <p class="text-gray-800 mb-6 leading-relaxed italic text-lg font-medium">
+                        "Un designer talentueux et très créatif. Il a transformé ma vision en réalité avec un logo et une charte graphique parfaits pour mon brand !"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                            FD
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg">Fatou Dia</h4>
+                            <p class="text-sm text-gray-600">Propriétaire E-Commerce</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 border border-green-200 hover:shadow-xl transition duration-300 animate-slide-up" style="animation-delay: 0.2s">
+                    <div class="flex gap-1 mb-4">
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                    </div>
+                    <p class="text-gray-800 mb-6 leading-relaxed italic text-lg font-medium">
+                        "Excellent travail sur notre site WordPress. Serigne est très à l'écoute, professionnel et les délais ont été respectés. Un vrai partenaire de confiance !"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                            IB
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg">Ismaila Ba</h4>
+                            <p class="text-sm text-gray-600">Chef de Projet Digital</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8 border border-orange-200 hover:shadow-xl transition duration-300 animate-slide-up" style="animation-delay: 0.3s">
+                    <div class="flex gap-1 mb-4">
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                    </div>
+                    <p class="text-gray-800 mb-6 leading-relaxed italic text-lg font-medium">
+                        "Merci Serigne pour ton aide sur le développement front-end. Ton code est propre, bien structuré et facile à comprendre. Vraiment impressionné !"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-orange-600 to-orange-800 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                            MK
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg">Moustapha Kebe</h4>
+                            <p class="text-sm text-gray-600">Fondateur Startup</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="bg-gradient-to-br from-pink-50 to-pink-100 rounded-2xl p-8 border border-pink-200 hover:shadow-xl transition duration-300 animate-slide-up" style="animation-delay: 0.4s">
+                    <div class="flex gap-1 mb-4">
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                    </div>
+                    <p class="text-gray-800 mb-6 leading-relaxed italic text-lg font-medium">
+                        "Un partenaire fiable et très compétent. Il a dépassé mes attentes sur le projet WordPress et l'optimisation SEO. Je le recommande sans hésiter !"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-pink-600 to-pink-800 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                            AS
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg">Aïssatou Sall</h4>
+                            <p class="text-sm text-gray-600">Gestionnaire de Contenu</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-2xl p-8 border border-indigo-200 hover:shadow-xl transition duration-300 animate-slide-up" style="animation-delay: 0.5s">
+                    <div class="flex gap-1 mb-4">
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                        <span class="text-2xl">⭐</span>
+                    </div>
+                    <p class="text-gray-800 mb-6 leading-relaxed italic text-lg font-medium">
+                        "Communication claire, délais respectés et résultats exceptionnels. Serigne est devenu mon prestataire de confiance pour tous mes projets web !"
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-indigo-600 to-indigo-800 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                            OK
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-lg">Ousmane Kane</h4>
+                            <p class="text-sm text-gray-600">Consultant Marketing</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-12 px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
-                <div>
-                    <h4 class="font-bold text-white text-lg mb-4">Serigne Fallou Diagne</h4>
-                    <p>Développeur web & designer graphique</p>
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section id="contact" class="py-24 px-6 bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 right-20 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+            <div class="absolute -bottom-8 left-20 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="text-center mb-16 space-y-4 text-white">
+                <h2 class="text-5xl font-black">Prêt à commencer ?</h2>
+                <p class="text-xl text-gray-200 max-w-2xl mx-auto">Contactez-moi pour discuter de vos idées et transformer votre vision en réalité web</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <a href="mailto:Diagnisko21@gmail.com" class="group bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center text-white border border-white/20 hover:border-white/50 hover:bg-white/20 transition duration-300">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 group-hover:bg-white/30 transition duration-300 mb-4">
+                        <img src="IMAGES/mail.jpg" alt="Email" class="w-full h-full rounded-full">
+                    </div>
+                    <p class="text-gray-200 font-medium mb-2">Email</p>
+                    <p class="font-bold text-lg break-all">Diagnisko21@gmail.com</p>
+                </a>
+
+                <a href="tel:+221781332323" class="group bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center text-white border border-white/20 hover:border-white/50 hover:bg-white/20 transition duration-300">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 group-hover:bg-white/30 transition duration-300 mb-4">
+                        <img src="IMAGES/telephone.jpg" alt="Phone" class="w-full h-full rounded-full">
+                    </div>
+                    <p class="text-gray-200 font-medium mb-2">Téléphone</p>
+                    <p class="font-bold text-lg">+221 78 133 23 23</p>
+                </a>
+
+                <div class="group bg-white/10 backdrop-blur-md rounded-2xl p-8 text-center text-white border border-white/20 hover:border-white/50 hover:bg-white/20 transition duration-300">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 group-hover:bg-white/30 transition duration-300 mb-4">
+                        <img src="IMAGES/localisation.png" alt="Location" class="w-full h-fuu rounded-full">
+                    </div>
+                    <p class="text-gray-200 font-medium mb-2">Localisation</p>
+                    <p class="font-bold text-lg">Dakar, Sénégal</p>
                 </div>
-                <div>
-                    <h4 class="font-bold text-white text-lg mb-4">Navigation</h4>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-2xl p-12 max-w-2xl mx-auto">
+                <h3 class="text-3xl font-black text-gray-900 mb-8 text-center">Envoyer un Message</h3>
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <input type="text" id="nom" name="nom" placeholder="Votre nom complet" required class="px-6 py-4 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none transition duration-300 font-medium">
+                        <input type="email" id="email" name="email" placeholder="Votre adresse email" required class="px-6 py-4 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none transition duration-300 font-medium">
+                    </div>
+                    <input type="text" id="sujet" name="sujet" placeholder="Sujet de votre message" required class="w-full px-6 py-4 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none transition duration-300 font-medium">
+                    <textarea id="message" name="message" placeholder="Décrivez votre projet..." rows="6" required class="w-full px-6 py-4 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none transition duration-300 font-medium resize-none"></textarea>
+                    <button type="submit" class="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-lg hover:shadow-xl transition duration-300 flex items-center justify-center gap-3 text-lg">
+                        <img src="IMAGES/envoyer.jpg" alt="Send" class="w-6 h-6 rounded-full">
+                        Envoyer mon message
+                    </button>
+                </form>
+                <p class="text-center text-gray-600 text-sm mt-6">Je répondrai à votre message dans les 24 heures</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-gray-900 text-gray-300 py-16 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold">
+                            <img src="IMAGES/moi.jpg" alt="SFD" class="w-full h-full object-cover rounded-full">
+                        </div>
+                        <span class="font-bold text-white text-lg">Serigne Fallou</span>
+                    </div>
+                    <p class="text-gray-400">Développeur web et designer graphique passionné par la création d'expériences numériques exceptionnelles.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <h4 class="font-bold text-white text-lg">Navigation</h4>
                     <ul class="space-y-2">
-                        <li><a href="#accueil" class="hover:text-white transition">Accueil</a></li>
-                        <li><a href="#apropos" class="hover:text-white transition">À propos</a></li>
-                        <li><a href="#expertise" class="hover:text-white transition">Expertise</a></li>
-                        <li><a href="#travaux" class="hover:text-white transition">Travaux</a></li>
+                        <li><a href="#accueil" class="text-gray-400 hover:text-white transition">Accueil</a></li>
+                        <li><a href="#apropos" class="text-gray-400 hover:text-white transition">À propos</a></li>
+                        <li><a href="#expertise" class="text-gray-400 hover:text-white transition">Expertise</a></li>
+                        <li><a href="#projets" class="text-gray-400 hover:text-white transition">Projets</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="font-bold text-white text-lg mb-4">Réseaux</h4>
+
+                <div class="space-y-4">
+                    <h4 class="font-bold text-white text-lg">Contact</h4>
+                    <ul class="space-y-2">
+                        <li><a href="mailto:Diagnisko21@gmail.com" class="text-gray-400 hover:text-white transition">Email</a></li>
+                        <li><a href="tel:+221781332323" class="text-gray-400 hover:text-white transition">Téléphone</a></li>
+                        <li class="text-gray-400">Dakar, Sénégal</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h4 class="font-bold text-white text-lg">Réseaux Sociaux</h4>
                     <div class="flex gap-4">
-                        <!-- ICONE GITHUB : remplacer par <img src="github-icon.svg" alt="GitHub"> -->
-                        <a href="https://github.com/diagnisko" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
-                            <img src="IMAGES/git.jpg" alt="GitHub" class="rounded-full">
+                        <a href="https://github.com/diagnisko" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition duration-300 shadow-lg hover:shadow-xl" title="GitHub">
+                            <img src="IMAGES/git.jpg" alt="GitHub" class="w-full h-full rounded-full">
                         </a>
-                        <!-- ICONE LINKEDIN : remplacer par <img src="linkedin-icon.svg" alt="LinkedIn"> -->
-                        <a href="https://www.facebook.com/profile.php?id=100091414854514&sk=directory_links" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
-                            <img src="IMAGES/facebook.jpg" alt="facebook" class="rounded-full">
+                        <a href="https://www.facebook.com/profile.php?id=100091414854514" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition duration-300 shadow-lg hover:shadow-xl" title="Facebook">
+                            <img src="IMAGES/facebook.jpg" alt="Facebook" class="w-full h-full rounded-full">
                         </a>
-                        <a href="https://twitter.com/diagnisko649" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
-                            <img src="IMAGES/x.jpg" alt="Twitter" class="rounded-full">
+                        <a href="https://twitter.com/diagnisko649" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition duration-300 shadow-lg hover:shadow-xl" title="Twitter">
+                            <img src="IMAGES/x.jpg" alt="Twitter" class="w-full h-full rounded-full">
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 pt-8 text-center">
-                <p>© 2026 Serigne Fallou Diagne. Tous droits réservés.</p>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>© 2026 Serigne Fallou Diagne. Tous droits réservés. | Créé avec passion 💙</p>
             </div>
         </div>
     </footer>
 
+    <!-- ==================== SCRIPTS ==================== -->
     <script>
-        // Smooth scroll for navigation
+        // Menu Mobile Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
+        });
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nom = document.getElementById('nom').value;
+            alert(`Merci ${nom}! Votre message a été envoyé avec succès. Je vous répondrai très bientôt! 🎉`);
+            this.reset();
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-slide-up, .animate-slide-right').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
